@@ -326,8 +326,10 @@ void readBuffer(void *pParam) {
 				if (track[number_of_track].points[track[number_of_track].number].str[0] == '#' && track[number_of_track].points[track[number_of_track].number].str[1] == '!')
 					printf("%s . Before %d string\n", track[number_of_track].points[track[number_of_track].number].str, string_counter);
 				else {
-					if(!track[number_of_track].active)
+					if (!track[number_of_track].active) {
 						track[number_of_track].active = true;
+						track[number_of_track].show = true;
+					}
 					if (track[number_of_track].index == track[number_of_track].number - 1)
 						track[number_of_track].index++;
 					track[number_of_track].number++;
@@ -346,6 +348,7 @@ void readBuffer(void *pParam) {
 		if (track[number_of_track].number > 0)
 		{
 			track[number_of_track].active = true;
+			track[number_of_track].show = true;
 			track[number_of_track].index = track[number_of_track].number;
 			number_of_track++;
 		}
@@ -465,7 +468,7 @@ int main(int argc, char** argv) {
 		track[i].number = 0;
 		track[i].size_of_array = 1;
 		track[i].index = 0;
-		track[i].show = 1;
+		track[i].show = 0;
 		track[i].active = 0;
 		track[i].color = { 0.5, 0.5, 0.5 };
 		track[i].points = (point_structure*)realloc(track[i].points, sizeof(point_structure) * track[i].size_of_array);
